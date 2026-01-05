@@ -1,12 +1,20 @@
 export default async (event) => {
-  console.log(event.body)
   const body = await new Response(event.body).json()
-  const amount = body.amount
+
+//{
+  //amount: 127.65,
+  //customer_name: 'Alan Da Costa Vale',
+  //customer_email: 'sadasd@gmail.com',
+  //customer_phone: '(12) 31231-2313',
+  //customer_cpf: '13911119666',
+  //detran_uf: 'AC',
+  //detran_nome: 'Acre'
+//}
 
   const r = await fetch("https://blackcat-wrapper.onrender.com/c001", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ amount })
+    body: JSON.stringify(body)
   })
 
   const j = await r.json()
